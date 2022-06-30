@@ -204,17 +204,17 @@ class DataProcessor(object):
 class NerProcessor(DataProcessor):
     def get_train_examples(self, data_dir):
         return self._create_example(
-            self._read_data(os.path.join(data_dir, "train.txt")), "train"
+            self._read_data(os.path.join(data_dir, "train_5.txt")), "train"
         )
 
     def get_dev_examples(self, data_dir):
         return self._create_example(
-            self._read_data(os.path.join(data_dir, "dev.txt")), "dev"
+            self._read_data(os.path.join(data_dir, "dev_5.txt")), "dev"
         )
 
     def get_test_examples(self,data_dir):
         return self._create_example(
-            self._read_data(os.path.join(data_dir, "test.txt")), "test"
+            self._read_data(os.path.join(data_dir, "test_f_5.txt")), "test"
         )
 
 
@@ -224,7 +224,12 @@ class NerProcessor(DataProcessor):
         "[PAD]" for padding
         :return:
         """
-        return ["[PAD]","B-MISC", "I-MISC", "O", "B-PER", "I-PER", "B-ORG", "I-ORG", "B-LOC", "I-LOC", "X","[CLS]","[SEP]"]
+        
+        
+        #return ["[PAD]","B-E","I-E", "O", "X","[CLS]","[SEP]"]
+        return ["[PAD]","B-E","I-E", 'B-FunctionalMagneticResonanceImaging', 'I-FunctionalMagneticResonanceImaging', 'O', 'B-CannabisAbuse', 'I-CannabisAbuse', 'B-NoKnownDisorder', 'I-NoKnownDisorder', 'B-StudyMethod', 'I-StudyMethod', 'B-SubstanceCravingScale', 'I-SubstanceCravingScale', 'B-StructuralImaging', 'I-StructuralImaging', 'B-TaskParadigmImaging', 'I-TaskParadigmImaging', 'B-T1WeightedImaging', 'I-T1WeightedImaging', 'B-Schizophrenia', 'B-Unmedicated', 'I-Unmedicated', 'I-Schizophrenia', 'B-PositronEmissionTomography', 'I-PositronEmissionTomography', 'B-PositiveandNegativeSyndromeScale', 'I-PositiveandNegativeSyndromeScale', 'B-ScaleforAssessmentofPositiveSymptoms', 'I-ScaleforAssessmentofPositiveSymptoms', 'B-ScaleforAssessmentofNegativeSymptoms', 'I-ScaleforAssessmentofNegativeSymptoms', 'B-RestingStateImaging', 'I-RestingStateImaging', 'B-AlcoholAbuse', 'I-AlcoholAbuse', 'B-Electrooculogram', 'I-Electrooculogram', 'B-Electroencephalogram', 'I-Electroencephalogram', 'B-SubstanceDisorder', 'I-SubstanceDisorder', 'B-GoNoGoTask', 'I-GoNoGoTask', 'B-Abstinent', 'I-Abstinent', 'B-FirstEpisodePsychosis', 'I-FirstEpisodePsychosis', 'B-MagneticResonanceImagingInstrument', 'I-MagneticResonanceImagingInstrument', 'B-NeurocognitiveTest', 'I-NeurocognitiveTest', 'B-AttentionDeficitHyperactivityDisorder', 'B-Questionnaire', 'I-Questionnaire', 'B-OpioidAbuse', 'I-OpioidAbuse', 'B-StructuredClinicalInterviewforDSMDisorders', 'I-StructuredClinicalInterviewforDSMDisorders', 'B-MajorDepressiveDisorder', 'I-MajorDepressiveDisorder', 'B-AnxietyDisorder', 'I-AnxietyDisorder', 'B-SubstanceUseScale', 'I-SubstanceUseScale', 'B-*', 'I-*', 'B-FunctionalNearInfraredSpectroscopy', 'I-FunctionalNearInfraredSpectroscopy', 'B-MagneticResonanceImaging', 'I-MagneticResonanceImaging', 'B-PsychopathologyScale', 'I-PsychopathologyScale', 'B-FunctionalImagingProtocol', 'B-PsychoticDisorder', 'I-PsychoticDisorder', 'B-MethamphetamineDependence', 'I-MethamphetamineDependence', 'B-ImpulseControlDisorder', 'I-ImpulseControlDisorder', 'B-MentalHealthDiagnosisScale', 'I-MentalHealthDiagnosisScale', 'I-FunctionalImagingProtocol', 'B-BarrattImpulsivenessQuestionnaire', 'I-BarrattImpulsivenessQuestionnaire', 'B-SubstanceDisorderStatus', 'I-SubstanceDisorderStatus', 'B-ComprehensiveAssessmentofSymptomsandHistory', 'I-ComprehensiveAssessmentofSymptomsandHistory', 'B-FamilyHistoryAssessmentModule', 'I-FamilyHistoryAssessmentModule', 'B-NationalAdultReadingTest', 'I-NationalAdultReadingTest', 'B-PersonalityRatingScale', 'I-PersonalityRatingScale', 'B-BeckDepressionInventory', 'I-BeckDepressionInventory', 'B-Semi-StructuredAssessmentfortheGeneticsofAlcoholism', 'B-TaskParadigmImagingProtocol', 'I-TaskParadigmImagingProtocol', 'B-CocaineAbuse', 'I-CocaineAbuse', 'B-NondependentAlcoholAbuse', 'I-NondependentAlcoholAbuse', 'B-AlcoholUseDisordersIdentificationTest', 'I-AlcoholUseDisordersIdentificationTest', 'B-FagerstromTestforNicotineDependence', 'I-FagerstromTestforNicotineDependence', 'B-MentalStateAssessmentScale', 'I-MentalStateAssessmentScale', 'B-T2WeightedImaging', 'I-T2WeightedImaging', 'B-Magnetoencephalography', 'B-DrinkingEpisode', 'I-DrinkingEpisode', 'B-DrinkingSession', 'I-DrinkingSession', 'B-ImpulsivityScale', 'I-ImpulsivityScale', 'B-AlcoholUseQuestionnaire', 'I-AlcoholUseQuestionnaire', 'B-DrinkingBinge', 'I-DrinkingBinge', 'B-DrinkingDay', 'I-DrinkingDay', 'B-DiffusionWeightedImaging', 'I-DiffusionWeightedImaging', "X","[CLS]","[SEP]"]
+        #return ["[PAD]","B-EdinburghHandednessInventoryQuestionnaire", "I-EdinburghHandednessInventoryQuestionnaire", "O", "B-FunctionalImagingProtocol", "I-FunctionalImagingProtocol", "B-NeurocognitiveTest", "I-NeurocognitiveTest", "B-NoKnownDisorder", "I-NoKnownDisorder", "B-PositiveandNegativeSyndromeScale", "I-PositiveandNegativeSyndromeScale","B-ScaleforAssessmentofNegativeSymptoms", "I-ScaleforAssessmentofNegativeSymptoms","B-Schizophrenia", "I-Schizophrenia","B-T1Wei  ghtedImaging", "I-T1WeightedImaging","B-Unmedicated", "I-Unmedicated","B-ScaleforAssessmentofPositiveSymptoms", "I-ScaleforAssessmentofPositiveSymptoms","X","[CLS]","[SEP]"]
+        #return ["[PAD]","B-MISC", "I-MISC", "O", "B-PER", "I-PER", "B-ORG", "I-ORG", "B-LOC", "I-LOC", "X","[CLS]","[SEP]"]
 
     def _create_example(self, lines, set_type):
         examples = []
